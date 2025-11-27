@@ -1,0 +1,71 @@
+// Copyright 2025 Signal Messenger, LLC
+// SPDX-License-Identifier: AGPL-3.0-only
+
+@use '../mixins';
+@use '../variables';
+
+.module-schedule-message-modal {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 8px 0;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__label {
+    @include mixins.font-body-1-bold;
+    @include mixins.light-theme {
+      color: variables.$color-gray-90;
+    }
+    @include mixins.dark-theme {
+      color: variables.$color-gray-05;
+    }
+  }
+
+  &__input {
+    @include mixins.font-body-1;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid;
+
+    @include mixins.light-theme {
+      background: variables.$color-white;
+      border-color: variables.$color-gray-15;
+      color: variables.$color-gray-90;
+
+      &:focus {
+        border-color: variables.$color-ultramarine;
+        outline: none;
+      }
+    }
+
+    @include mixins.dark-theme {
+      background: variables.$color-gray-80;
+      border-color: variables.$color-gray-60;
+      color: variables.$color-gray-05;
+
+      &:focus {
+        border-color: variables.$color-ultramarine-light;
+        outline: none;
+      }
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      @include mixins.dark-theme {
+        filter: invert(1);
+      }
+    }
+  }
+
+  &__error {
+    @include mixins.font-body-2;
+    color: variables.$color-accent-red;
+    padding: 4px 0;
+  }
+}

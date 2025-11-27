@@ -26,6 +26,7 @@ import { SmartGroupV2Permissions } from './GroupV2Permissions.preload.js';
 import { SmartMessageDetail } from './MessageDetail.preload.js';
 import { SmartPendingInvites } from './PendingInvites.preload.js';
 import { SmartStickerManager } from './StickerManager.preload.js';
+import { SmartScheduledMessagesPanel } from './ScheduledMessagesPanel.preload.js';
 import { getConversationTitleForPanelType } from '../../util/getConversationTitleForPanelType.std.js';
 import { getIntl } from '../selectors/user.std.js';
 import {
@@ -381,6 +382,10 @@ function PanelElement({
     );
   }
 
+  if (panel.type === PanelType.ScheduledMessages) {
+    return <SmartScheduledMessagesPanel conversationId={conversationId} />;
+  }
+
   if (panel.type === PanelType.StickerManager) {
     return <SmartStickerManager />;
   }
@@ -399,6 +404,7 @@ function getPanelKey(panel: PanelRenderType): string {
     case PanelType.GroupPermissions:
     case PanelType.GroupV1Members:
     case PanelType.NotificationSettings:
+    case PanelType.ScheduledMessages:
     case PanelType.StickerManager:
       return panel.type;
     case PanelType.MessageDetails:

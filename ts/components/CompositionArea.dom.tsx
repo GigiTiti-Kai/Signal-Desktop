@@ -82,6 +82,7 @@ import { AxoButton } from '../axo/AxoButton.dom.js';
 import { tw } from '../axo/tw.dom.js';
 import { isPollSendEnabled, type PollCreateType } from '../types/Polls.dom.js';
 import { PollCreateModal } from './PollCreateModal.dom.js';
+import { ScheduleMessageModal } from './ScheduleMessageModal.dom.js';
 
 export type OwnProps = Readonly<{
   acceptedMessageRequest: boolean | null;
@@ -341,6 +342,7 @@ export const CompositionArea = memo(function CompositionArea({
     AttachmentDraftType | undefined
   >();
   const [isPollModalOpen, setIsPollModalOpen] = useState(false);
+  const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
   const inputApiRef = useRef<InputApi | undefined>();
   const fileInputRef = useRef<null | HTMLInputElement>(null);
   const photoVideoInputRef = useRef<null | HTMLInputElement>(null);
@@ -452,6 +454,42 @@ export const CompositionArea = memo(function CompositionArea({
       handleClosePollModal();
     },
     [conversationId, sendPoll, handleClosePollModal]
+  );
+
+  const handleCloseScheduleModal = useCallback(() => {
+    setIsScheduleModalOpen(false);
+  }, []);
+
+  const handleScheduleMessage = useCallback(
+    (scheduledAt: number) => {
+      // Get current message content from the input
+      const inputApi = inputApiRef.current;
+      if (!inputApi) {
+        return;
+      }
+
+      const { text, bodyRanges } = inputApi.getText();
+
+      // TODO: Save to database and open panel
+      // For now, log the scheduled message details
+      console.log('Scheduling message:', {
+        conversationId,
+        scheduledAt,
+        body: text,
+        bodyRanges,
+        attachments: draftAttachments,
+      });
+
+      // Clear the input
+      inputApi.reset();
+      onClearAttachments(conversationId);
+
+      // Close the modal
+      setIsScheduleModalOpen(false);
+
+      // TODO: Open scheduled messages panel
+    },
+    [conversationId, draftAttachments, onClearAttachments]
   );
 
   function maybeEditAttachment(attachment: AttachmentDraftType) {
@@ -1179,6 +1217,15 @@ export const CompositionArea = memo(function CompositionArea({
             sortedGroupMembers={sortedGroupMembers}
             theme={theme}
           />
+          {!draftEditMessage && (
+            <button
+              type="button"
+              className="CompositionArea__schedule-button"
+              onClick={() => setIsScheduleModalOpen(true)}
+              aria-label={i18n('icu:CompositionArea__schedule-message')}
+              title={i18n('icu:CompositionArea__schedule-message')}
+            />
+          )}
         </div>
         {!large ? (
           <>
@@ -1223,6 +1270,13 @@ export const CompositionArea = memo(function CompositionArea({
           i18n={i18n}
           onClose={handleClosePollModal}
           onSendPoll={handleSendPoll}
+        />
+      )}
+      {isScheduleModalOpen && (
+        <ScheduleMessageModal
+          i18n={i18n}
+          onClose={handleCloseScheduleModal}
+          onSchedule={handleScheduleMessage}
         />
       )}
     </div>

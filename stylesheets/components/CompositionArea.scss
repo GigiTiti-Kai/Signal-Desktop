@@ -129,6 +129,41 @@
       margin: 0;
     }
   }
+
+  &__schedule-button {
+    @include mixins.button-reset;
+    position: absolute;
+    inset-inline-end: 8px;
+    bottom: 8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    opacity: 0.6;
+    transition: opacity 0.15s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      @include mixins.light-theme {
+        @include mixins.color-svg(
+          '../images/icons/v3/timer/timer.svg',
+          variables.$color-gray-60
+        );
+      }
+      @include mixins.dark-theme {
+        @include mixins.color-svg(
+          '../images/icons/v3/timer/timer.svg',
+          variables.$color-gray-25
+        );
+      }
+    }
+  }
   $comp-area: &;
   &__toggle-large {
     $width: 48px;

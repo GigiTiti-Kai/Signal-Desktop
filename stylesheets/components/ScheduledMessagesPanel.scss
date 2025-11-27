@@ -1,0 +1,128 @@
+// Copyright 2025 Signal Messenger, LLC
+// SPDX-License-Identifier: AGPL-3.0-only
+
+@use '../mixins';
+@use '../variables';
+
+.module-scheduled-messages-panel {
+  padding: 0 16px;
+
+  &__empty {
+    @include mixins.font-body-1;
+    text-align: center;
+    padding: 32px 16px;
+
+    @include mixins.light-theme {
+      color: variables.$color-gray-45;
+    }
+    @include mixins.dark-theme {
+      color: variables.$color-gray-25;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid;
+
+    @include mixins.light-theme {
+      border-color: variables.$color-gray-15;
+    }
+    @include mixins.dark-theme {
+      border-color: variables.$color-gray-65;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__item-content {
+    flex: 1;
+    min-width: 0;
+    margin-inline-end: 12px;
+  }
+
+  &__item-time {
+    @include mixins.font-body-2-bold;
+    margin-bottom: 4px;
+
+    @include mixins.light-theme {
+      color: variables.$color-gray-90;
+    }
+    @include mixins.dark-theme {
+      color: variables.$color-gray-05;
+    }
+  }
+
+  &__item-preview {
+    @include mixins.font-body-2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include mixins.light-theme {
+      color: variables.$color-gray-60;
+    }
+    @include mixins.dark-theme {
+      color: variables.$color-gray-25;
+    }
+  }
+
+  &__item-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  &__action-button {
+    @include mixins.button-reset;
+    @include mixins.font-body-2;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+
+    &--edit {
+      @include mixins.light-theme {
+        background-color: variables.$color-gray-05;
+        color: variables.$color-gray-90;
+
+        &:hover {
+          background-color: variables.$color-gray-15;
+        }
+      }
+      @include mixins.dark-theme {
+        background-color: variables.$color-gray-65;
+        color: variables.$color-gray-05;
+
+        &:hover {
+          background-color: variables.$color-gray-60;
+        }
+      }
+    }
+
+    &--delete {
+      @include mixins.light-theme {
+        background-color: variables.$color-accent-red;
+        color: variables.$color-white;
+
+        &:hover {
+          background-color: darken(variables.$color-accent-red, 10%);
+        }
+      }
+      @include mixins.dark-theme {
+        background-color: variables.$color-accent-red;
+        color: variables.$color-white;
+
+        &:hover {
+          background-color: darken(variables.$color-accent-red, 10%);
+        }
+      }
+    }
+  }
+}

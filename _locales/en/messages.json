@@ -5872,6 +5872,54 @@
     "messageformat": "Add attachment or poll",
     "description": "Aria label for plus button that opens attachment menu"
   },
+  "icu:CompositionArea__schedule-message": {
+    "messageformat": "Schedule message",
+    "description": "Aria label for schedule message button in composition area"
+  },
+  "icu:ScheduleMessageModal__title": {
+    "messageformat": "Schedule message",
+    "description": "Title for the schedule message modal"
+  },
+  "icu:ScheduleMessageModal__date-label": {
+    "messageformat": "Date",
+    "description": "Label for date picker in schedule message modal"
+  },
+  "icu:ScheduleMessageModal__time-label": {
+    "messageformat": "Time",
+    "description": "Label for time picker in schedule message modal"
+  },
+  "icu:ScheduleMessageModal__schedule-button": {
+    "messageformat": "Schedule",
+    "description": "Button text for scheduling the message"
+  },
+  "icu:ScheduleMessageModal__cancel-button": {
+    "messageformat": "Cancel",
+    "description": "Button text for canceling the schedule"
+  },
+  "icu:ScheduleMessageModal__past-time-error": {
+    "messageformat": "Please select a future time",
+    "description": "Error message when user selects a past time"
+  },
+  "icu:ScheduledMessagesPanel__title": {
+    "messageformat": "Scheduled messages",
+    "description": "Title for the scheduled messages panel"
+  },
+  "icu:ScheduledMessagesPanel__empty": {
+    "messageformat": "No scheduled messages",
+    "description": "Message shown when there are no scheduled messages"
+  },
+  "icu:ScheduledMessagesPanel__edit": {
+    "messageformat": "Edit",
+    "description": "Button text for editing a scheduled message"
+  },
+  "icu:ScheduledMessagesPanel__delete": {
+    "messageformat": "Delete",
+    "description": "Button text for deleting a scheduled message"
+  },
+  "icu:ScheduledMessagesPanel__scheduled-for": {
+    "messageformat": "Scheduled for {date} at {time}",
+    "description": "Text showing when a message is scheduled for"
+  },
   "icu:CompositionArea--sms-only__title": {
     "messageformat": "This person isn’t using Signal",
     "description": "Title for the composition area for the SMS-only contact"
