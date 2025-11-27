@@ -381,8 +381,10 @@ $rtl-icon-map: (
     text-align: inherit;
   }
 
-  @media (forced-colors: active) {
-    border: 1px solid WindowText;
+  & {
+    @media (forced-colors: active) {
+      border: 1px solid WindowText;
+    }
   }
 }
 
