@@ -31,6 +31,7 @@ import { reducer as network } from './ducks/network.dom.js';
 import { reducer as notificationProfiles } from './ducks/notificationProfiles.preload.js';
 import { reducer as preferredReactions } from './ducks/preferredReactions.preload.js';
 import { reducer as safetyNumber } from './ducks/safetyNumber.preload.js';
+import { reducer as scheduledMessages } from './ducks/scheduledMessages.preload.js';
 import { reducer as search } from './ducks/search.preload.js';
 import { reducer as stickers } from './ducks/stickers.preload.js';
 import { reducer as stories } from './ducks/stories.preload.js';
@@ -69,6 +70,7 @@ export const reducer = combineReducers({
   notificationProfiles,
   preferredReactions,
   safetyNumber,
+  scheduledMessages,
   search,
   stickers,
   stories,

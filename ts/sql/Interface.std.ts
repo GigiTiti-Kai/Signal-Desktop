@@ -70,6 +70,12 @@ import type {
   PinnedMessageId,
   PinnedMessageParams,
 } from '../types/PinnedMessage.std.js';
+import type {
+  ScheduledMessageType,
+  ScheduledMessageCreateType,
+  ScheduledMessageUpdateType,
+  ScheduledMessageStatus,
+} from '../types/ScheduledMessages.std.js';
 
 export type ReadableDB = Database & { __readable_db: never };
 export type WritableDB = ReadableDB & { __writable_db: never };
@@ -964,6 +970,16 @@ type ReadableInterface = {
   getAllDonationReceipts(): Array<DonationReceipt>;
   getDonationReceiptById(id: string): DonationReceipt | undefined;
 
+  getAllScheduledMessages(): Array<ScheduledMessageType>;
+  getScheduledMessagesForConversation(
+    conversationId: string
+  ): Array<ScheduledMessageType>;
+  getScheduledMessageById(id: number): ScheduledMessageType | undefined;
+  getPendingScheduledMessages(
+    beforeTimestamp?: number
+  ): Array<ScheduledMessageType>;
+  getNextScheduledMessageTime(): number | undefined;
+
   getAllChatFolders: () => ReadonlyArray<ChatFolder>;
   getCurrentChatFolders: () => ReadonlyArray<CurrentChatFolder>;
   getChatFolder: (id: ChatFolderId) => ChatFolder | null;
@@ -1310,6 +1326,20 @@ type WritableInterface = {
   _deleteAllDonationReceipts(): void;
   deleteDonationReceiptById(id: string): void;
   createDonationReceipt(profile: DonationReceipt): void;
+
+  createScheduledMessage(
+    message: ScheduledMessageCreateType
+  ): ScheduledMessageType;
+  updateScheduledMessage(
+    update: ScheduledMessageUpdateType
+  ): ScheduledMessageType | undefined;
+  updateScheduledMessageStatus(
+    id: number,
+    status: ScheduledMessageStatus
+  ): void;
+  deleteScheduledMessage(id: number): void;
+  deleteScheduledMessagesForConversation(conversationId: string): void;
+  _deleteAllScheduledMessages(): void;
 
   createChatFolder: (chatFolder: ChatFolder) => void;
   createAllChatsChatFolder: () => ChatFolder;

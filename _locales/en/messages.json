@@ -5920,6 +5920,14 @@
     "messageformat": "Scheduled for {date} at {time}",
     "description": "Text showing when a message is scheduled for"
   },
+  "icu:Toast--MessageScheduled": {
+    "messageformat": "Message scheduled",
+    "description": "Toast message shown when a message is scheduled"
+  },
+  "icu:Toast--ScheduledMessageDeleted": {
+    "messageformat": "Scheduled message deleted",
+    "description": "Toast message shown when a scheduled message is deleted"
+  },
   "icu:CompositionArea--sms-only__title": {
     "messageformat": "This person isn’t using Signal",
     "description": "Title for the composition area for the SMS-only contact"

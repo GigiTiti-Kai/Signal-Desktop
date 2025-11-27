@@ -62,6 +62,7 @@ export enum ToastType {
   MediaNoLongerAvailable = 'MediaNoLongerAvailable',
   MessageBodyTooLong = 'MessageBodyTooLong',
   MessageLoop = 'MessageLoop',
+  MessageScheduled = 'MessageScheduled',
   NotificationProfileUpdate = 'NotificationProfileUpdate',
   OriginalMessageNotFound = 'OriginalMessageNotFound',
   PinnedConversationsFull = 'PinnedConversationsFull',
@@ -72,6 +73,7 @@ export enum ToastType {
   ReceiptSaveFailed = 'ReceiptSaveFailed',
   ReportedSpam = 'ReportedSpam',
   ReportedSpamAndBlocked = 'ReportedSpamAndBlocked',
+  ScheduledMessageDeleted = 'ScheduledMessageDeleted',
   SQLError = 'SQLError',
   StickerPackInstallFailed = 'StickerPackInstallFailed',
   StoryMuted = 'StoryMuted',
@@ -208,6 +210,8 @@ export type AnyToast =
   | { toastType: ToastType.ReceiptSaveFailed }
   | { toastType: ToastType.ReportedSpam }
   | { toastType: ToastType.ReportedSpamAndBlocked }
+  | { toastType: ToastType.MessageScheduled }
+  | { toastType: ToastType.ScheduledMessageDeleted }
   | { toastType: ToastType.StickerPackInstallFailed }
   | { toastType: ToastType.SQLError }
   | { toastType: ToastType.StoryMuted }

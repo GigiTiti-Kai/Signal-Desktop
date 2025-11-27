@@ -28,6 +28,7 @@ import { actions as nav } from './ducks/nav.std.js';
 import { actions as network } from './ducks/network.dom.js';
 import { actions as notificationProfiles } from './ducks/notificationProfiles.preload.js';
 import { actions as safetyNumber } from './ducks/safetyNumber.preload.js';
+import { actions as scheduledMessages } from './ducks/scheduledMessages.preload.js';
 import { actions as search } from './ducks/search.preload.js';
 import { actions as stickers } from './ducks/stickers.preload.js';
 import { actions as stories } from './ducks/stories.preload.js';
@@ -66,6 +67,7 @@ export const actionCreators: ReduxActions = {
   network,
   notificationProfiles,
   safetyNumber,
+  scheduledMessages,
   search,
   stickers,
   stories,

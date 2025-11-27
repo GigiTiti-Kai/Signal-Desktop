@@ -99,6 +99,10 @@ export function initializeRedux(data: ReduxInitData): void {
       actionCreators.safetyNumber,
       store.dispatch
     ),
+    scheduledMessages: bindActionCreators(
+      actionCreators.scheduledMessages,
+      store.dispatch
+    ),
     search: bindActionCreators(actionCreators.search, store.dispatch),
     stickers: bindActionCreators(actionCreators.stickers, store.dispatch),
     stories: bindActionCreators(actionCreators.stories, store.dispatch),

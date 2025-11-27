@@ -32,6 +32,7 @@ import type { actions as nav } from './ducks/nav.std.js';
 import type { actions as network } from './ducks/network.dom.js';
 import type { actions as notificationProfiles } from './ducks/notificationProfiles.preload.js';
 import type { actions as safetyNumber } from './ducks/safetyNumber.preload.js';
+import type { actions as scheduledMessages } from './ducks/scheduledMessages.preload.js';
 import type { actions as search } from './ducks/search.preload.js';
 import type { actions as stickers } from './ducks/stickers.preload.js';
 import type { actions as stories } from './ducks/stories.preload.js';
@@ -69,6 +70,7 @@ export type ReduxActions = {
   network: typeof network;
   notificationProfiles: typeof notificationProfiles;
   safetyNumber: typeof safetyNumber;
+  scheduledMessages: typeof scheduledMessages;
   search: typeof search;
   stickers: typeof stickers;
   stories: typeof stories;

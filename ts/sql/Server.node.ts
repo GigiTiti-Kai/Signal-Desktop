@@ -277,6 +277,19 @@ import type {
 } from '../types/Colors.std.js';
 import { sqlLogger } from './sqlLogger.node.js';
 import { permissiveMessageAttachmentSchema } from './server/messageAttachments.std.js';
+import {
+  getAllScheduledMessages,
+  getScheduledMessagesForConversation,
+  getScheduledMessageById,
+  getPendingScheduledMessages,
+  getNextScheduledMessageTime,
+  createScheduledMessage,
+  updateScheduledMessage,
+  updateScheduledMessageStatus,
+  deleteScheduledMessage,
+  deleteScheduledMessagesForConversation,
+  _deleteAllScheduledMessages,
+} from './server/scheduledMessages.std.js';
 import { getFilePathsOwnedByMessage } from '../util/messageFilePaths.std.js';
 import { createMessagesOnInsertTrigger } from './migrations/1500-search-polls.std.js';
 
@@ -471,6 +484,12 @@ export const DataReader: ServerReadableInterface = {
 
   getAllDonationReceipts,
   getDonationReceiptById,
+
+  getAllScheduledMessages,
+  getScheduledMessagesForConversation,
+  getScheduledMessageById,
+  getPendingScheduledMessages,
+  getNextScheduledMessageTime,
 
   getAllChatFolders,
   getCurrentChatFolders,
@@ -724,6 +743,13 @@ export const DataWriter: ServerWritableInterface = {
   _deleteAllDonationReceipts,
   deleteDonationReceiptById,
   createDonationReceipt,
+
+  createScheduledMessage,
+  updateScheduledMessage,
+  updateScheduledMessageStatus,
+  deleteScheduledMessage,
+  deleteScheduledMessagesForConversation,
+  _deleteAllScheduledMessages,
 
   createChatFolder,
   createAllChatsChatFolder,

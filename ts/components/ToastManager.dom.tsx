@@ -746,6 +746,22 @@ export function renderToast({
     );
   }
 
+  if (toastType === ToastType.MessageScheduled) {
+    return (
+      <Toast onClose={hideToast} timeout={SHORT_TIMEOUT}>
+        {i18n('icu:Toast--MessageScheduled')}
+      </Toast>
+    );
+  }
+
+  if (toastType === ToastType.ScheduledMessageDeleted) {
+    return (
+      <Toast onClose={hideToast} timeout={SHORT_TIMEOUT}>
+        {i18n('icu:Toast--ScheduledMessageDeleted')}
+      </Toast>
+    );
+  }
+
   if (toastType === ToastType.StickerPackInstallFailed) {
     return (
       <Toast onClose={hideToast}>

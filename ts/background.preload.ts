@@ -47,6 +47,10 @@ import {
   update as updateExpiringMessagesService,
 } from './services/expiringMessagesDeletion.preload.js';
 import {
+  initialize as initializeScheduledMessagesSenderService,
+  sendPastScheduledMessages,
+} from './services/scheduledMessagesSender.preload.js';
+import {
   initialize as initializeNotificationProfilesService,
   fastUpdate as updateNotificationProfileService,
 } from './services/notificationProfilesService.preload.js';
@@ -1376,6 +1380,10 @@ export async function startApp(): Promise<void> {
 
     initializeExpiringMessageService();
     initializeNotificationProfilesService();
+    initializeScheduledMessagesSenderService();
+
+    // Send any scheduled messages that were missed while the app was closed
+    void sendPastScheduledMessages();
 
     log.info('Blocked uuids cleanup: starting...');
     const blockedUuids = itemStorage.get(BLOCKED_UUIDS_ID, []);
